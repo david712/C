@@ -6,10 +6,13 @@
 //VARIABLES
 char UserID[16];
 char UserPW[16];
-char database[32];
+char Database[32];
 char** table_name = {"Temperature", "Humidity"};
 
 void Set_DB_User(char* id, char* pw);
+void Set_Database(char* db_name);
+
+void SendQuery(char* a_query);
 
 /*
 typedef enum
