@@ -3,14 +3,15 @@
 
 #define MAX_STRING_LEN  32
 
-#define	MYSQL_HOST	"localhost"
-#define	ADMIN_ID	"root"
-#define ADMIN_PW	"passwd"
-#define DATABASE	"testdb"
-
+//VARIABLES
 char UserID[16];
 char UserPW[16];
+char database[32];
+char** table_name = {"Temperature", "Humidity"};
 
+void Set_DB_User(char* id, char* pw);
+
+/*
 typedef enum
 {
     NO_ERROR = 0,
@@ -34,3 +35,4 @@ typedef enum
         return NULL;    \
     }  \
 }
+*/

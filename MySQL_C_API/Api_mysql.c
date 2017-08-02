@@ -8,6 +8,41 @@ void Set_DB_User(char* id, char* pw)
 	if(pw != NULL)	memcpy(UserPW, pw, strlen(pw));
 }
 
+void Set_Database(char* db_name)
+{
+	memset(Database, 0, sizeof(Database));
+	if(db_name != NULL)	memcpy(Database, db_name, strlen(db_name));
+}
+
+void finish_with_error(MYSQL *con)
+{
+	fprintf(stderr, "%s\n", mysql_error(con));
+	mysql_close(con);
+	exit(1);        
+}
+
+void SendQuery(char* a_query)
+{
+	if(Database == NULL)		printf("(!) Set 'Database' first\n");
+	if(UserID == NULL)			printf("(!) Set 'User ID of DB' first\n");
+	if(UserPW == NULL)			printf("(!) Set 'User PW of DB' first\n");
+
+	MYSQL *con = mysql_init(NULL);
+	if (con == NULL) 
+	{
+		fprintf(stderr, "%s \n", mysql_error(con));
+		exit(1);
+	}
+
+	if (mysql_real_connect(con, "localhost", UserID, UserPW, Database, 0, NULL, 0) == NULL)
+		finish_with_error(con);
+	if (mysql_query(con, a_query))
+	    finish_with_error(con);
+
+	mysql_close(con);
+}
+
+/*
 void Query_NoResult(char a_db, char* a_query)
 {
 	mysql_close(Single_Query(a_db, a_query));
@@ -111,3 +146,4 @@ void Table_ShowList(char* db)
 {
 	//sprintf(Query, "SHOW tables");
 }
+*/

@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "api_mysql.h": "c",
+        "mysql.h": "c",
+        "locale_classes.h": "c",
+        "locale_facets.h": "c",
+        "lock.h": "c",
+        "object.h": "c",
+        "ref.h": "c",
+        "stdio2.h": "c"
+    }
+}
